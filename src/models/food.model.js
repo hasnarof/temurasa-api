@@ -8,6 +8,7 @@ const foodSchema = mongoose.Schema({
     required: true,
     trim: true,
   },
+  image: String,
   description: String,
   likes: Number,
 });
@@ -17,4 +18,4 @@ foodSchema.plugin(paginate);
 
 const Food = mongoose.model('Food', foodSchema);
 
-exports.Food = Food;
+module.exports = Food;

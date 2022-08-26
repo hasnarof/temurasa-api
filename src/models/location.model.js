@@ -15,4 +15,4 @@ locationSchema.plugin(paginate);
 
 const Location = mongoose.model('Location', locationSchema);
 
-exports.Location = Location;
+module.exports = Location;

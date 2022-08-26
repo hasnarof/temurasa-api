@@ -15,4 +15,4 @@ foodCategorySchema.plugin(paginate);
 
 const FoodCategory = mongoose.model('FoodCategory', foodCategorySchema);
 
-exports.FoodCategory = FoodCategory;
+module.exports = FoodCategory;

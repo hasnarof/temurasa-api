@@ -12,4 +12,4 @@ restaurantReviewSchema.plugin(paginate);
 
 const RestaurantReview = mongoose.model('RestaurantReview', restaurantReviewSchema);
 
-exports.RestaurantReview = RestaurantReview;
+module.exports = RestaurantReview;
