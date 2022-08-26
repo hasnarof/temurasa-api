@@ -3,6 +3,9 @@ const authRoute = require('./auth.route');
 const userRoute = require('./user.route');
 const docsRoute = require('./docs.route');
 const migrationRoute = require('./migration.route');
+const locationRoute = require('./location.route');
+const restaurantRoute = require('./restaurant.route');
+const foodRoute = require('./food.route');
 const config = require('../../config/config');
 
 const router = express.Router();
@@ -15,6 +18,18 @@ const defaultRoutes = [
   {
     path: '/users',
     route: userRoute,
+  },
+  {
+    path: '/locations',
+    route: locationRoute,
+  },
+  {
+    path: '/foods',
+    route: foodRoute,
+  },
+  {
+    path: '/restaurants',
+    route: restaurantRoute,
   },
 ];
 

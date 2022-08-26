@@ -3,6 +3,6 @@ const migrationController = require('../../controllers/migration.controller');
 
 const router = express.Router();
 
-router.get('/food', migrationController.food);
+router.get('/food', migrationController.restaurant);
 
 module.exports = router;

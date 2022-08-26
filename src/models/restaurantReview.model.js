@@ -4,7 +4,9 @@ const { toJSON, paginate } = require('./plugins');
 
 const restaurantReviewSchema = mongoose.Schema({
   content: String,
-  imageUrl: String,
+  image: String,
+  user: { type: mongoose.Types.ObjectId, ref: 'User' },
+  restaurant: { type: mongoose.Types.ObjectId, ref: 'Restaurant' },
 });
 
 restaurantReviewSchema.plugin(toJSON);
