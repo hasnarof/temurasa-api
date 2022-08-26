@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 const { toJSON, paginate } = require('./plugins');
-const { foodCategorySchema } = require('./foodCategory.model');
 
 const foodSchema = mongoose.Schema({
   name: {
@@ -11,7 +10,12 @@ const foodSchema = mongoose.Schema({
   image: String,
   description: String,
   likes: Number,
-  tags: [foodCategorySchema],
+  tags: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'FoodCategory',
+    },
+  ],
 });
 
 foodSchema.plugin(toJSON);
