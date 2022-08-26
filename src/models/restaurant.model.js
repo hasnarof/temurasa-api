@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
-const validator = require('validator');
 const { toJSON, paginate } = require('./plugins');
+const { foodSchema } = require('./food.model');
 
 const restaurantSchema = mongoose.Schema({
   name: {
@@ -13,6 +13,7 @@ const restaurantSchema = mongoose.Schema({
   phone: String,
   openHours: [{ day: String, open: String, close: String }],
   mapUrl: String,
+  foods: [foodSchema],
 });
 
 restaurantSchema.plugin(toJSON);
