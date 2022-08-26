@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const validator = require('validator');
 const { toJSON, paginate } = require('./plugins');
 
 const foodCategorySchema = mongoose.Schema({
@@ -8,6 +7,12 @@ const foodCategorySchema = mongoose.Schema({
     required: true,
     trim: true,
   },
+  foods: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Food',
+    },
+  ],
 });
 
 foodCategorySchema.plugin(toJSON);
@@ -15,4 +20,4 @@ foodCategorySchema.plugin(paginate);
 
 const FoodCategory = mongoose.model('FoodCategory', foodCategorySchema);
 
-module.exports = FoodCategory;
+module.exports = { FoodCategory, foodCategorySchema };
