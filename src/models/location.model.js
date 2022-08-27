@@ -9,7 +9,7 @@ const locationSchema = mongoose.Schema({
   },
   foods: [
     {
-      type: mongoose.Schema.Types.ObjectId,
+      type: mongoose.Types.ObjectId,
       ref: 'Food',
     },
   ],

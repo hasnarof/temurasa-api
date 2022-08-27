@@ -14,7 +14,7 @@ const restaurantSchema = mongoose.Schema({
   mapUrl: String,
   foods: [
     {
-      type: mongoose.Schema.Types.ObjectId,
+      type: mongoose.Types.ObjectId,
       ref: 'Food',
     },
   ],

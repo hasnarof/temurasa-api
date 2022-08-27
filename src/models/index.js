@@ -2,11 +2,12 @@ const mongoose = require('mongoose');
 const { toJSON, paginate } = require('./plugins');
 
 const User = require('./user.model');
-const { Food } = require('./food.model');
+const Food = require('./food.model');
 const FoodCategory = require('./foodCategory.model');
 const Location = require('./location.model');
 const RestaurantReview = require('./restaurantReview.model');
 const Restaurant = require('./restaurant.model');
+const { Token } = require('./token.model');
 
 // const foodAndFoodCategorySchema = {
 //   food: { type: mongoose.Types.ObjectId, ref: 'Food' },
@@ -22,7 +23,7 @@ const Restaurant = require('./restaurant.model');
 
 // const FoodAndLocation = mongoose.model('Food_Location', foodAndLocationSchema);
 
-module.exports.Token = require('./token.model');
+module.exports.Token = Token;
 
 module.exports.User = User;
 module.exports.Food = Food;
