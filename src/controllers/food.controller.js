@@ -10,7 +10,7 @@ const getAll = catchAsync(async (req, res) => {
   // array of tags
   tags = tags ? tags.split(',') : false;
 
-  const filter = { $and: [] };
+  let filter = { $and: [] };
   if (locationId) {
     filter.$and.push({ location: locationId });
   }
@@ -18,7 +18,11 @@ const getAll = catchAsync(async (req, res) => {
     filter.$and.push({ tags: { $all: tags } });
   }
   if (search) {
-    filter.$and.push({ name: new RegExp(search, 'i') });
+    filter.$and.push({ name: { $regex: search, $options: 'i' } });
+  }
+
+  if (filter.$and.length === 0) {
+    filter = {};
   }
 
   const foods = await Food.find(filter)
@@ -35,6 +39,12 @@ const getAll = catchAsync(async (req, res) => {
   });
 });
 
+const getAllFoodTags = catchAsync(async (req, res) => {
+  const foodTags = await FoodCategory.find();
+  return res.status(httpStatus.OK).send({ data: foodTags });
+});
+
 module.exports = {
   getAll,
+  getAllFoodTags,
 };

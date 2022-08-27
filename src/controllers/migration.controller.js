@@ -123,6 +123,48 @@ const food = catchAsync(async (req, res) => {
 
   const foods2 = await Food.find();
 
+  const restaurants = [
+    {
+      name: 'Warung Pojok Mbak Hos',
+      address: 'Lembana, Bates, Kec. Blega, Bangkalan, Jawa Timur',
+      phone: '0812-XXXX-XXX',
+      openHours: ['Open 24 hours'],
+      location: mongoose.Types.ObjectId('63098571b1b38b3e3fb34d18'),
+      foods: [mongoose.Types.ObjectId(foods2[1].id), mongoose.Types.ObjectId(foods2[5].id)],
+      map: 'https://maps.app.goo.gl/XhwpH5U1WHxAeJ5u9',
+    },
+    {
+      name: 'Warung Asela',
+      address: 'Jalan Raya, Slabayan, Sejati, Kec. Camplong, Kabupaten Sampang, Jawa Timur',
+      phone: '0812-XXXX-XXX',
+      openHours: ['Open 9AM - 10 PM'],
+      location: mongoose.Types.ObjectId('63098571b1b38b3e3fb34d18'),
+      foods: [
+        mongoose.Types.ObjectId(foods2[0].id),
+        mongoose.Types.ObjectId(foods2[1].id),
+        mongoose.Types.ObjectId(foods2[2].id),
+        mongoose.Types.ObjectId(foods2[3].id),
+      ],
+      map: 'https://maps.app.goo.gl/XhwpH5U1WHxAeJ5u9',
+    },
+  ];
+
+  await Restaurant.collection.bulkWrite(
+    restaurants.map((user) => ({
+      updateOne: {
+        filter: {
+          name: user.name,
+          description: user.description,
+          likes: user.likes,
+          image: user.image,
+          location: user.location,
+        },
+        update: { $set: user },
+        upsert: true,
+      },
+    }))
+  );
+
   res.status(httpStatus.CREATED).send();
 });
 

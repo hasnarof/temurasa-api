@@ -5,6 +5,7 @@ const auth = require('../../middlewares/auth');
 
 const router = express.Router();
 
+router.get('/', restaurantController.getAll);
 router.get('/:id', restaurantController.getRestaurantById);
 
 router.get('/:id/reviews', restaurantReviewController.getAllByRestaurant);

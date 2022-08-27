@@ -10,14 +10,18 @@ const restaurantSchema = mongoose.Schema({
   description: String,
   address: String,
   phone: String,
-  openHours: [{ day: String, open: String, close: String }],
-  mapUrl: String,
+  openHours: [String],
+  map: String,
   foods: [
     {
       type: mongoose.Types.ObjectId,
       ref: 'Food',
     },
   ],
+  location: {
+    type: mongoose.Types.ObjectId,
+    ref: 'Location',
+  },
 });
 
 restaurantSchema.plugin(toJSON);
