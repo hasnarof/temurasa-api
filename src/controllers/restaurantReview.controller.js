@@ -24,6 +24,7 @@ const createReview = catchAsync(async (req, res) => {
     restaurant: req.body.restaurantId,
     content: req.body.content,
     image: req.body.image,
+    rating: req.body.rating,
   });
   return res.status(httpStatus.CREATED).send({ data: review });
 });
