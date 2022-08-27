@@ -24,9 +24,12 @@ const uploadImage = catchAsync(async (req, res) => {
   const { fieldname, originalname, encoding, mimetype, buffer } = req.files[0];
 
   const imageRef = ref(storage, `images/${+Date.now()}-${originalname}`);
+  const metadata = {
+    contentType: 'image',
+  };
 
   let url;
-  await uploadBytes(imageRef, buffer).then(async (snapshot) => {
+  await uploadBytes(imageRef, buffer, metadata).then(async (snapshot) => {
     await getDownloadURL(snapshot.ref).then((downloadURL) => {
       url = downloadURL;
     });
