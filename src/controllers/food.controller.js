@@ -37,7 +37,7 @@ const getAll = catchAsync(async (req, res) => {
       });
   }
 
-  await Food.Food.find().then((foods) => {
+  await Food.find().then((foods) => {
     res.status(httpStatus.OK).send({ foods });
   });
 });

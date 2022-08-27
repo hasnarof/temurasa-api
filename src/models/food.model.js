@@ -23,4 +23,4 @@ foodSchema.plugin(paginate);
 
 const Food = mongoose.model('Food', foodSchema);
 
-module.exports = { Food, foodSchema };
+module.exports = Food;
