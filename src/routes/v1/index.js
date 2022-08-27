@@ -6,6 +6,7 @@ const migrationRoute = require('./migration.route');
 const locationRoute = require('./location.route');
 const restaurantRoute = require('./restaurant.route');
 const foodRoute = require('./food.route');
+const imageRoute = require('./image.route');
 const config = require('../../config/config');
 
 const router = express.Router();
@@ -18,6 +19,10 @@ const defaultRoutes = [
   {
     path: '/users',
     route: userRoute,
+  },
+  {
+    path: '/images',
+    route: imageRoute,
   },
   {
     path: '/locations',

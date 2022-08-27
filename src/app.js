@@ -6,6 +6,8 @@ const compression = require('compression');
 const cors = require('cors');
 const passport = require('passport');
 const httpStatus = require('http-status');
+// const fileupload = require('express-fileupload');
+const fileParser = require('express-multipart-file-parser');
 const config = require('./config/config');
 const morgan = require('./config/morgan');
 const { jwtStrategy } = require('./config/passport');
@@ -26,6 +28,8 @@ app.use(helmet());
 
 // parse json request body
 app.use(express.json());
+
+app.use(fileParser);
 
 // parse urlencoded request body
 app.use(express.urlencoded({ extended: true }));
