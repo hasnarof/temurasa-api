@@ -8,7 +8,7 @@ const locationSchema = mongoose.Schema({
     required: true,
     trim: true,
   },
-  foods: [foodSchema],
+  // foods: [foodSchema],
 });
 
 locationSchema.plugin(toJSON);

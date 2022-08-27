@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const { toJSON, paginate } = require('./plugins');
 
 const User = require('./user.model');
-const Food = require('./food.model');
+const { Food } = require('./food.model');
 const FoodCategory = require('./foodCategory.model');
 const Location = require('./location.model');
 const RestaurantReview = require('./restaurantReview.model');

@@ -12,10 +12,14 @@ const foodSchema = mongoose.Schema({
   likes: Number,
   tags: [
     {
-      type: mongoose.Schema.Types.ObjectId,
+      type: mongoose.Types.ObjectId,
       ref: 'FoodCategory',
     },
   ],
+  location: {
+    type: mongoose.Types.ObjectId,
+    ref: 'Location',
+  },
 });
 
 foodSchema.plugin(toJSON);

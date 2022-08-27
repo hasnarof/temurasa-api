@@ -1,44 +1,37 @@
 const httpStatus = require('http-status');
+const mongoose = require('mongoose');
 // const pick = require('../utils/pick');
 const catchAsync = require('../utils/catchAsync');
 const { Food, FoodCategory, Location, Restaurant } = require('../models');
 
 const getAll = catchAsync(async (req, res) => {
-  const {
-    // page = 1,
-    // limit = 10,
-    // search = '',
-    locationId = false,
-    category = false,
-    restaurantId = false,
-  } = req.query;
+  let { page = 1, limit = 10, search = false, locationId = false, tags = false } = req.query;
 
+  // array of tags
+  tags = tags ? tags.split(',') : false;
+
+  const filter = { $and: [] };
   if (locationId) {
-    await Location.findById(locationId)
-      .populate('foods')
-      .then((foods) => {
-        res.status(httpStatus.OK).send({ foods: foods.foods });
-      });
+    filter.$and.push({ location: locationId });
+  }
+  if (tags) {
+    filter.$and.push({ tags: { $all: tags } });
+  }
+  if (search) {
+    filter.$and.push({ name: new RegExp(search, 'i') });
   }
 
-  if (category) {
-    await FoodCategory.find({ name: category })
-      .populate('foods')
-      .then((foods) => {
-        res.status(httpStatus.OK).send({ foods: foods.foods });
-      });
-  }
+  const foods = await Food.find(filter)
+    .populate('tags')
+    .limit(limit * 1)
+    .skip((page - 1) * limit)
+    .exec();
 
-  if (restaurantId) {
-    await Restaurant.findById(restaurantId)
-      .populate('foods')
-      .then((foods) => {
-        res.status(httpStatus.OK).send({ foods: foods.foods });
-      });
-  }
-
-  await Food.Food.find().then((foods) => {
-    res.status(httpStatus.OK).send({ foods });
+  const count = await Food.countDocuments();
+  res.status(httpStatus.OK).send({
+    data: foods,
+    totalPages: Math.ceil(count / limit),
+    currentPage: page,
   });
 });
 
