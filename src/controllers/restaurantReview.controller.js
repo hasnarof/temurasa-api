@@ -1,6 +1,6 @@
 const httpStatus = require('http-status');
 const catchAsync = require('../utils/catchAsync');
-const { RestaurantReview } = require('../models');
+const { RestaurantReview, Food, Restaurant } = require('../models');
 
 const getAllByRestaurant = catchAsync(async (req, res) => {
   const { page = 1, limit = 10 } = req.query;
@@ -25,8 +25,15 @@ const createReview = catchAsync(async (req, res) => {
     content: req.body.content,
     image: req.body.image,
     rating: req.body.rating,
+    mostLikeFood: req.body.mostLikeFood,
   });
-  return res.status(httpStatus.CREATED).send({ data: review });
+  const restaurant = await Restaurant.findById(req.body.restaurantId);
+  const newRating = (restaurant.ratingFix * restaurant.ratingCount + req.body.rating) / (restaurant.ratingCount + 1);
+  restaurant.ratingCount += 1;
+  restaurant.ratingFix = newRating;
+  await restaurant.save();
+  const food = await Food.findOneAndUpdate({ name: review.mostLikeFood }, { $inc: { likes: 1 } });
+  return res.status(httpStatus.CREATED).send({ data: { review, restaurant, food } });
 });
 
 const editReview = catchAsync(async (req, res) => {

@@ -9,7 +9,10 @@ const foodSchema = mongoose.Schema({
   },
   image: String,
   description: String,
-  likes: Number,
+  likes: {
+    type: Number,
+    default: 0,
+  },
   tags: [
     {
       type: mongoose.Types.ObjectId,

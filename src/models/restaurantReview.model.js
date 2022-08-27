@@ -8,6 +8,7 @@ const restaurantReviewSchema = mongoose.Schema({
   rating: Number,
   user: { type: mongoose.Types.ObjectId, ref: 'User' },
   restaurant: { type: mongoose.Types.ObjectId, ref: 'Restaurant' },
+  mostLikeFood: String,
 });
 
 restaurantReviewSchema.plugin(toJSON);

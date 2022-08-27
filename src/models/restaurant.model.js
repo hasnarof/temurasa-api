@@ -12,15 +12,25 @@ const restaurantSchema = mongoose.Schema({
   phone: String,
   openHours: [String],
   map: String,
-  foods: [
-    {
-      type: mongoose.Types.ObjectId,
-      ref: 'Food',
-    },
-  ],
+  foods: [String],
   location: {
     type: mongoose.Types.ObjectId,
     ref: 'Location',
+  },
+  menu: [
+    {
+      title: String,
+      image: String,
+    },
+  ],
+  image: [String],
+  ratingFix: {
+    type: Number,
+    default: 0,
+  },
+  ratingCount: {
+    type: Number,
+    default: 0,
   },
 });
 

@@ -19,7 +19,7 @@ const getAll = catchAsync(async (req, res) => {
   }
 
   const restaurants = await Restaurant.find(filter)
-    .populate('foods', 'name')
+    // .populate('foods', 'name')
     .populate('location', 'name')
     .limit(limit * 1)
     .skip((page - 1) * limit)
