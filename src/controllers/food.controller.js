@@ -27,6 +27,7 @@ const getAll = catchAsync(async (req, res) => {
 
   const foods = await Food.find(filter)
     .populate('tags')
+    .populate('location', 'name')
     .limit(limit * 1)
     .skip((page - 1) * limit)
     .exec();

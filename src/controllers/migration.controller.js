@@ -20,6 +20,24 @@ const food = catchAsync(async (req, res) => {
     {
       name: 'Spicy',
     },
+    {
+      name: 'Snacks',
+    },
+    {
+      name: 'Dessert',
+    },
+    {
+      name: 'Chicken & Duck',
+    },
+    {
+      name: 'Noodles',
+    },
+    {
+      name: 'Rice',
+    },
+    {
+      name: 'Seafood',
+    },
   ];
 
   await FoodCategory.collection.bulkWrite(
@@ -35,6 +53,9 @@ const food = catchAsync(async (req, res) => {
   const locations = [
     {
       name: 'Madura',
+    },
+    {
+      name: 'Palembang',
     },
     {
       name: 'Jogjakarta',
@@ -64,7 +85,7 @@ const food = catchAsync(async (req, res) => {
       image:
         'https://firebasestorage.googleapis.com/v0/b/temurasa-206af.appspot.com/o/foods%2Frujak_cingur.png?alt=media&token=2690598d-4547-40a7-9d1a-215c4ab8b9b6',
       likes: 100,
-      location: mongoose.Types.ObjectId(locations2[0].id),
+      location: mongoose.Types.ObjectId('63098571b1b38b3e3fb34d18'),
       tags: [mongoose.Types.ObjectId(foodCategories2[0].id), mongoose.Types.ObjectId(foodCategories2[4].id)],
     },
     {
@@ -73,7 +94,7 @@ const food = catchAsync(async (req, res) => {
       image:
         'https://firebasestorage.googleapis.com/v0/b/temurasa-206af.appspot.com/o/foods%2Fcampur.png?alt=media&token=64e2ddfc-4451-49d7-9c52-111a3b476156',
       likes: 90,
-      location: mongoose.Types.ObjectId(locations2[0].id),
+      location: mongoose.Types.ObjectId('63098571b1b38b3e3fb34d18'),
       tags: [mongoose.Types.ObjectId(foodCategories2[0].id), mongoose.Types.ObjectId(foodCategories2[4].id)],
     },
     {
@@ -82,7 +103,7 @@ const food = catchAsync(async (req, res) => {
       image:
         'https://firebasestorage.googleapis.com/v0/b/temurasa-206af.appspot.com/o/foods%2Fsoto_madura.png?alt=media&token=eeb94443-6b06-4daf-820e-685d6e5a4ac2',
       likes: 70,
-      location: mongoose.Types.ObjectId(locations2[0].id),
+      location: mongoose.Types.ObjectId('63098571b1b38b3e3fb34d18'),
     },
     {
       name: 'Sate Lalat',
@@ -90,7 +111,7 @@ const food = catchAsync(async (req, res) => {
       image:
         'https://firebasestorage.googleapis.com/v0/b/temurasa-206af.appspot.com/o/foods%2Fsate_lalat.png?alt=media&token=e02b3343-d5fe-4375-9bc7-0d273d93244a',
       likes: 30,
-      location: mongoose.Types.ObjectId(locations2[0].id),
+      location: mongoose.Types.ObjectId('63098571b1b38b3e3fb34d18'),
     },
     {
       name: 'Lorjuk',
@@ -99,7 +120,7 @@ const food = catchAsync(async (req, res) => {
       image:
         'https://firebasestorage.googleapis.com/v0/b/temurasa-206af.appspot.com/o/foods%2Florjuk.png?alt=media&token=724a0267-c677-4d1e-8431-02d0ef9c897b',
       likes: 100,
-      location: mongoose.Types.ObjectId(locations2[0].id),
+      location: mongoose.Types.ObjectId('63098571b1b38b3e3fb34d18'),
     },
     {
       name: 'Nasi Serpong',
@@ -107,7 +128,7 @@ const food = catchAsync(async (req, res) => {
       image:
         'https://firebasestorage.googleapis.com/v0/b/temurasa-206af.appspot.com/o/foods%2Fnasi_serpong.png?alt=media&token=93b0f9fc-122a-442c-90bf-c9416a783e5c',
       likes: 90,
-      location: mongoose.Types.ObjectId(locations2[1].id),
+      location: mongoose.Types.ObjectId('63098571b1b38b3e3fb34d18'),
     },
   ];
 
@@ -147,6 +168,28 @@ const food = catchAsync(async (req, res) => {
         'https://firebasestorage.googleapis.com/v0/b/temurasa-206af.appspot.com/o/restaurants%2Fwarung_asela.jpeg?alt=media&token=af3818dc-b50c-4ac5-9a9d-a3c29eae41fb',
         'https://firebasestorage.googleapis.com/v0/b/temurasa-206af.appspot.com/o/restaurants%2Fwarung_asela2.jpeg?alt=media&token=1fe359d4-076d-488a-8a66-ac302fc6c268',
       ],
+      ratingFix: 4,
+      ratingCount: 100,
+    },
+    {
+      name: 'Warung Asela 2',
+      address: 'Jalan Raya, Slabayan, Sejati, Kec. Camplong, Kabupaten Sampang, Jawa Timur',
+      phone: '0812-XXXX-XXX',
+      openHours: ['Open 9AM - 10 PM'],
+      location: mongoose.Types.ObjectId('63098571b1b38b3e3fb34d18'),
+      foods: ['Gurame', 'Capcay', 'Kepiting'],
+      map: 'https://goo.gl/maps/CDsJN7cMv4zKrjGG8',
+      menu: {
+        title: 'Menu',
+        image:
+          'https://firebasestorage.googleapis.com/v0/b/temurasa-206af.appspot.com/o/restaurants%2Fwarung_asela_menu.jpeg?alt=media&token=b904a35c-a9a1-4ad8-9156-2080a4e91701',
+      },
+      image: [
+        'https://firebasestorage.googleapis.com/v0/b/temurasa-206af.appspot.com/o/restaurants%2Fwarung_asela2.jpeg?alt=media&token=1fe359d4-076d-488a-8a66-ac302fc6c268',
+        'https://firebasestorage.googleapis.com/v0/b/temurasa-206af.appspot.com/o/restaurants%2Fwarung_asela.jpeg?alt=media&token=af3818dc-b50c-4ac5-9a9d-a3c29eae41fb',
+      ],
+      ratingFix: 4.1,
+      ratingCount: 100,
     },
     {
       name: 'Putri Restaurant',
@@ -164,9 +207,11 @@ const food = catchAsync(async (req, res) => {
       image: [
         'https://firebasestorage.googleapis.com/v0/b/temurasa-206af.appspot.com/o/restaurants%2Fputri_restaurant.jpeg?alt=media&token=e9a6ae0b-05eb-4c03-8af9-5c65f943ee67',
       ],
+      ratingFix: 4.2,
+      ratingCount: 100,
     },
     {
-      name: 'Putri Restaurant',
+      name: 'Putri Restaurant 2',
       address: 'Jl. Trunojoyo No. 107, Pamekasan',
       phone: '0812-XXXX-XXX',
       openHours: ['Open 7AM - 11 PM'],
@@ -179,8 +224,53 @@ const food = catchAsync(async (req, res) => {
           'https://firebasestorage.googleapis.com/v0/b/temurasa-206af.appspot.com/o/restaurants%2Fwarung_asela_menu.jpeg?alt=media&token=b904a35c-a9a1-4ad8-9156-2080a4e91701',
       },
       image: [
+        'https://firebasestorage.googleapis.com/v0/b/temurasa-206af.appspot.com/o/restaurants%2Fputri_restaurant2.jpeg?alt=media&token=2a6fe6fe-bf2c-47ce-86ee-9fc6165af0bf',
         'https://firebasestorage.googleapis.com/v0/b/temurasa-206af.appspot.com/o/restaurants%2Fputri_restaurant.jpeg?alt=media&token=e9a6ae0b-05eb-4c03-8af9-5c65f943ee67',
       ],
+      ratingFix: 4.2,
+      ratingCount: 100,
+    },
+    {
+      name: 'RM Kaysa Putri',
+      address: 'Jl. Raya Taddan Desa Taddan, Kecamatan, Kec. Camplong, Kabupaten Sampang, Jawa Timur',
+      phone: '0812-XXXX-XXX',
+      openHours: ['Open 9 AM - 9 PM'],
+      location: mongoose.Types.ObjectId('63098571b1b38b3e3fb34d18'),
+      foods: ['Rujak Cingur', 'Campur', 'Sate Lalat'],
+      map: 'https://goo.gl/maps/TXsNsFCwhpHHjPq99',
+      menu: {
+        title: 'Menu',
+        image:
+          'https://firebasestorage.googleapis.com/v0/b/temurasa-206af.appspot.com/o/restaurants%2Fwarung_asela_menu.jpeg?alt=media&token=b904a35c-a9a1-4ad8-9156-2080a4e91701',
+      },
+      image: [
+        'https://firebasestorage.googleapis.com/v0/b/temurasa-206af.appspot.com/o/restaurants%2Fmahkota_kaysa.jpeg?alt=media&token=47936685-ba2f-4736-b27f-1ba75304f8ce',
+        'https://firebasestorage.googleapis.com/v0/b/temurasa-206af.appspot.com/o/restaurants%2Fmahkota_kaysa2.jpeg?alt=media&token=1838ccdc-866b-431a-8968-0d581f2d8ad3',
+        'https://firebasestorage.googleapis.com/v0/b/temurasa-206af.appspot.com/o/restaurants%2Fmahkota_kaysa3.jpeg?alt=media&token=29e52983-17dc-48fa-b9b8-bd666c2f6b78',
+      ],
+      ratingFix: 4.3,
+      ratingCount: 100,
+    },
+    {
+      name: 'RM Kaysa Putri 2',
+      address: 'Jl. Raya Taddan Desa Taddan, Kecamatan, Kec. Camplong, Kabupaten Sampang, Jawa Timur',
+      phone: '0812-XXXX-XXX',
+      openHours: ['Open 9 AM - 9 PM'],
+      location: mongoose.Types.ObjectId('63098571b1b38b3e3fb34d18'),
+      foods: ['Rujak Cingur', 'Campur', 'Sate Lalat'],
+      map: 'https://goo.gl/maps/TXsNsFCwhpHHjPq99',
+      menu: {
+        title: 'Menu',
+        image:
+          'https://firebasestorage.googleapis.com/v0/b/temurasa-206af.appspot.com/o/restaurants%2Fwarung_asela_menu.jpeg?alt=media&token=b904a35c-a9a1-4ad8-9156-2080a4e91701',
+      },
+      image: [
+        'https://firebasestorage.googleapis.com/v0/b/temurasa-206af.appspot.com/o/restaurants%2Fmahkota_kaysa3.jpeg?alt=media&token=29e52983-17dc-48fa-b9b8-bd666c2f6b78',
+        'https://firebasestorage.googleapis.com/v0/b/temurasa-206af.appspot.com/o/restaurants%2Fmahkota_kaysa.jpeg?alt=media&token=47936685-ba2f-4736-b27f-1ba75304f8ce',
+        'https://firebasestorage.googleapis.com/v0/b/temurasa-206af.appspot.com/o/restaurants%2Fmahkota_kaysa2.jpeg?alt=media&token=1838ccdc-866b-431a-8968-0d581f2d8ad3',
+      ],
+      ratingFix: 4.3,
+      ratingCount: 100,
     },
   ];
 
@@ -199,6 +289,18 @@ const food = catchAsync(async (req, res) => {
       },
     }))
   );
+
+  const foodsPalembang = [
+    {
+      name: 'Rujak Cingur',
+      description: `Cingur is taken from the Madurese regional language which means "mouth". This food has a salty taste, and is served with a variety of ingredients such as cucumber, jicama, young mango, plus rice cake, tofu, tempe, cingur, sprouts, water spinach, and long beans.`,
+      image:
+        'https://firebasestorage.googleapis.com/v0/b/temurasa-206af.appspot.com/o/foods%2Frujak_cingur.png?alt=media&token=2690598d-4547-40a7-9d1a-215c4ab8b9b6',
+      likes: 100,
+      location: mongoose.Types.ObjectId('63098571b1b38b3e3fb34d18'),
+      tags: [mongoose.Types.ObjectId(foodCategories2[0].id), mongoose.Types.ObjectId(foodCategories2[4].id)],
+    },
+  ];
 
   res.status(httpStatus.CREATED).send();
 });
