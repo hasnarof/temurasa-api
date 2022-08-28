@@ -32,6 +32,10 @@ const restaurantSchema = mongoose.Schema({
     type: Number,
     default: 0,
   },
+  reviewCount: {
+    type: Number,
+    default: 0,
+  },
 });
 
 restaurantSchema.plugin(toJSON);

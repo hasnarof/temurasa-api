@@ -31,6 +31,7 @@ const createReview = catchAsync(async (req, res) => {
   const newRating = (restaurant.ratingFix * restaurant.ratingCount + req.body.rating) / (restaurant.ratingCount + 1);
   restaurant.ratingCount += 1;
   restaurant.ratingFix = newRating;
+  restaurant.reviewCount += 1;
   await restaurant.save();
   const food = await Food.findOneAndUpdate({ name: review.mostLikeFood }, { $inc: { likes: 1 } });
   return res.status(httpStatus.CREATED).send({ data: { review, restaurant, food } });
@@ -50,6 +51,11 @@ const editReview = catchAsync(async (req, res) => {
 
 const deleteReview = catchAsync(async (req, res) => {
   await RestaurantReview.findByIdAndDelete(req.params.id);
+  const restaurant = await Restaurant.findById(req.body.restaurantId);
+  // if (restaurant.reviewCount != undefined && restaurant.reviewCount > 0) {
+  //   restaurant.reviewCount -= 1;
+  // }
+  // await restaurant.save();
   return res.status(httpStatus.OK).send({ message: 'Success delete' });
 });
 

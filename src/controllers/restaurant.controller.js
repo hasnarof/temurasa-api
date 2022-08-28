@@ -1,6 +1,6 @@
 const httpStatus = require('http-status');
 const catchAsync = require('../utils/catchAsync');
-const { Restaurant } = require('../models');
+const { Restaurant, RestaurantReview } = require('../models');
 
 const getAll = catchAsync(async (req, res) => {
   let { page = 1, limit = 10, search = false, foodTag = false } = req.query;
@@ -26,6 +26,7 @@ const getAll = catchAsync(async (req, res) => {
     .exec();
 
   const count = await Restaurant.countDocuments();
+
   res.status(httpStatus.OK).send({
     data: restaurants,
     totalPages: Math.ceil(count / limit),
