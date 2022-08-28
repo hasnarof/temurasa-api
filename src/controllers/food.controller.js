@@ -32,9 +32,12 @@ const getAll = catchAsync(async (req, res) => {
     .skip((page - 1) * limit)
     .exec();
 
+  const location = locationId ? await Location.findById(locationId) : null;
+
   const count = await Food.countDocuments();
   res.status(httpStatus.OK).send({
     data: foods,
+    location,
     totalPages: Math.ceil(count / limit),
     currentPage: page,
   });
