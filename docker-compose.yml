@@ -1,11 +1,11 @@
 version: '3'
 
 services:
-  node-app:
+  temurasa-api:
     build: .
-    image: node-app
+    image: temurasa-api
     environment:
-      - MONGODB_URL=mongodb://mongodb:27017/node-boilerplate
+      - MONGODB_URL=${MONGODB_URL}
     ports:
       - '3000:3000'
     depends_on:
